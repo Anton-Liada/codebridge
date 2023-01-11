@@ -1,0 +1,65 @@
+@import '../../styles/main.scss';
+
+.card {
+  font-family: $ff-montserrat;
+  width: 400px;
+  color: $color-dark-grey;
+  background-color: $color-white;
+  border: 1px solid $color-light-grey;
+  border-radius: 5px;
+  box-shadow: $shadow;
+  overflow: hidden;
+
+  &__img {
+    height: 217px;
+  }
+
+  &__content {
+    padding: 25px;
+  }
+
+  &__icon-calendar {
+    height: 13.5px;
+    width: 13.5px;
+    padding-right: 22.5px;
+    background-image: url(../../styles/icons/Calendar.svg);
+  }
+
+  &__published {
+    margin-bottom: 24px;
+    font-size: $fs-14;
+    opacity: 0.6;
+  }
+
+  &__title {
+    margin-bottom: 20px;
+    font-size: $fs-24;
+    font-weight: $fw-400;
+    line-height: 29px;
+  }
+
+  &__description {
+    margin-bottom: 20px;
+    line-height: 150%;
+  }
+
+  &__link {
+    display: flex;
+    align-items: center;
+    font-weight: $fw-700;
+    line-height: 150%;
+  }
+  
+  &__icon-arrow {
+    height: 10px;
+    width: 12px;
+    margin-left: 6px;
+    background-image: url(../../styles/icons/Arrow-right.svg);
+  }
+
+  &__icon-arrow,
+  &__icon-calendar {
+    background-repeat: no-repeat;
+  }
+
+}
