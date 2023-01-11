@@ -3,5 +3,10 @@
 .home-page {
   padding-top: 50px;
   padding-bottom: 63px;
-  background-color: $color-light-grey;
+  font-family: $ff-montserrat;
+  background-color: $color-white;
+
+  &__filter {
+    margin-bottom: 45px;
+  }
 }

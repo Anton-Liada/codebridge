@@ -1,6 +1,6 @@
 import React from 'react'
-import { Card } from '/src/components/card';
 import './HomePage.scss';
+import { CardList } from '/src/components/cardList';
 import { Filter } from '/src/components/filter';
 
 export const HomePage = () => {
@@ -9,14 +9,7 @@ export const HomePage = () => {
       <div className="container">
         <Filter />
 
-        <div className="card-list home-page__card-list">
-          <Card />
-          <Card />
-          <Card />
-          <Card />
-          <Card />
-          <Card />
-        </div>
+        < CardList/>
       </div>
     </div>
   )

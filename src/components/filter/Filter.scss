@@ -3,4 +3,28 @@
 .filter {
   display: flex;
   flex-direction: column;
+  border-bottom: 1px solid $color-white-1;
+
+  &__label {
+    margin-bottom: 10px;
+    font-weight: $fw-600;
+  }
+
+  &__input {
+    height: 50px;
+    width: 600px;
+    margin-bottom: 40px;
+    padding-left: 60px;
+    font-family: $ff-montserrat;
+    color: $color-grey;
+    background: url(../../styles/icons/Search.svg) no-repeat scroll 20px 13px;
+    border: 1px solid $color-white-1;
+    border-radius: 5px;
+    box-shadow: $shadow;
+  }
+
+  &__results {
+    font-weight: $fw-600;
+    margin-bottom: 5px;
+  }
 }

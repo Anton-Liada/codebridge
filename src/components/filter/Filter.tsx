@@ -9,9 +9,14 @@ export const Filter = () => {
       </label>
 
       <input
+        className="filter__input"
         type="text"
-        placeholder="Search"
+        placeholder="Search..."
       />
+
+      <p className="filter__results">
+        Results: 6
+      </p>
     </div>
   )
 }
