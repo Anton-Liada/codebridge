@@ -20,7 +20,7 @@
     height: 13.5px;
     width: 13.5px;
     padding-right: 22.5px;
-    background-image: url(../../styles/icons/Calendar.svg);
+    background: url(../../styles/icons/Calendar.svg) no-repeat;
   }
 
   &__published {
@@ -46,7 +46,6 @@
     display: inline-flex;
     align-items: center;
     font-weight: $fw-700;
-    line-height: 150%;
 
     &::before {
       content: '';
@@ -71,12 +70,6 @@
     height: 10px;
     width: 12px;
     margin-left: 6px;
-    background-image: url(../../styles/icons/Arrow-right.svg);
+    background: url(../../styles/icons/Arrow-right.svg) no-repeat;
   }
-
-  &__icon-arrow,
-  &__icon-calendar {
-    background-repeat: no-repeat;
-  }
-
 }

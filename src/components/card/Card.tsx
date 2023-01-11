@@ -1,36 +1,41 @@
-import React from 'react'
+import React from 'react';
+import { Link } from 'react-router-dom';
+import { formattedDate } from './helpers';
+import { IArticle } from '/src/types/types';
 import './Card.scss';
 
-export const Card = () => {
+interface IProps {
+  article: IArticle;
+}
+
+export const Card: React.FC<IProps> = ({ article }) => {
+  const { id, title, imageUrl, summary, publishedAt } = article;
+
+  const shortenedTitle = title.length > 41 ? `${title.slice(0, 41)}...` : title;
+
+  const shortenedSummary =
+    summary.length > 100 ? `${summary.slice(0, 110)}...` : summary;
+
   return (
     <div className="card">
-      <img
-        src="https://www.teslarati.com/wp-content/uploads/2023/01/Crew-Dragon-Cargo-Dragon-F9-Starship-B7-S24-FH-LC-40-39A-SLC-4E-Starbase-SpaceX-NASA-Richard-Angle-1-c.jpg"
-        alt=""
-        className="card__img"
-      />
+      <img src={imageUrl} alt="" className="card__img" />
 
       <div className="card__content">
         <p className="card__published">
           <span className="card__icon-calendar"></span>
 
-          June 29th, 2021
+          {formattedDate(publishedAt)}
         </p>
 
-        <h2 className="card__title">
-          The 2020 Worlds Most Valuable Brands
-        </h2>
+        <h3 className="card__title">{shortenedTitle}</h3>
 
-        <p className="card__description">
-          Non sed molestie tortor massa vitae in mattis. Eget vel consequat hendrerit commodo libero aliquam. Urna arcu nunc tortor vitae pharetra...
-        </p>
+        <p className="card__description">{shortenedSummary}</p>
 
-        <a href="#" className="card__link">
+        <Link to={`/articles/${id}`} className="card__link">
           Read more
-          
-          <span className='card__icon-arrow'></span>
-        </a>
+          <span className="card__icon-arrow"></span>
+        </Link>
       </div>
     </div>
-  )
-}
+  );
+};

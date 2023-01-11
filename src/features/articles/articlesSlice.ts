@@ -1,7 +1,7 @@
-import axios from 'axios';
 import { createAsyncThunk, createSlice, PayloadAction } from '@reduxjs/toolkit';
+import axios from 'axios';
 import { Status } from '/src/types/enums';
-import { IArticlesState, IArticle } from '/src/types/types';
+import { IArticle, IArticlesState } from '/src/types/types';
 
 const initialState: IArticlesState = {
   articles: [],
@@ -9,13 +9,16 @@ const initialState: IArticlesState = {
   error: null,
 };
 
-export const fetchArticles = createAsyncThunk('aritcles/fetchArticles', async () => {
-  const response = await axios.get(
-    'https://api.spaceflightnewsapi.net/v3/articles'
-  );
+export const fetchArticles = createAsyncThunk(
+  'aritcles/fetchArticles',
+  async () => {
+    const response = await axios.get(
+      'https://api.spaceflightnewsapi.net/v3/articles/'
+    );
 
-  return response.data;
-});
+    return response.data;
+  }
+);
 
 const setStatus = (state: IArticlesState) => {
   state.status = Status.LOADING;
@@ -34,7 +37,8 @@ const articlesSlice = createSlice({
     builder
       .addCase(fetchArticles.pending, setStatus)
       .addCase(
-        fetchArticles.fulfilled, (state, action: PayloadAction<IArticle[]>) => {
+        fetchArticles.fulfilled,
+        (state, action: PayloadAction<IArticle[]>) => {
           state.status = Status.SUCCEEDED;
           state.articles = action.payload;
         }

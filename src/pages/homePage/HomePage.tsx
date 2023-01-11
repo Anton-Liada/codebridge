@@ -1,16 +1,16 @@
-import React from 'react'
+import React from 'react';
 import './HomePage.scss';
 import { CardList } from '/src/components/cardList';
 import { Filter } from '/src/components/filter';
 
-export const HomePage = () => {
+export const HomePage: React.FC = () => {
   return (
     <div className="home-page">
       <div className="container">
         <Filter />
 
-        < CardList/>
+        <CardList />
       </div>
     </div>
-  )
-}
+  );
+};
