@@ -2,19 +2,24 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import { formattedDate } from './helpers';
 import { IArticle } from '/src/types/types';
+import { Marker } from 'react-mark.js';
 import './Card.scss';
 
-interface IProps {
+interface ICardProps {
   article: IArticle;
+  value: string;
 }
 
-export const Card: React.FC<IProps> = ({ article }) => {
+export const Card: React.FC<ICardProps> = ({ article, value }) => {
   const { id, title, imageUrl, summary, publishedAt } = article;
 
-  const shortenedTitle = title.length > 41 ? `${title.slice(0, 41)}...` : title;
+  const shortenedTitle = title.length > 41
+    ? `${title.slice(0, 41)}...`
+    : title;
 
-  const shortenedSummary =
-    summary.length > 100 ? `${summary.slice(0, 110)}...` : summary;
+  const shortenedSummary = summary.length > 100
+    ? `${summary.slice(0, 100)}...`
+    : summary;
 
   return (
     <div className="card">
@@ -27,9 +32,17 @@ export const Card: React.FC<IProps> = ({ article }) => {
           {formattedDate(publishedAt)}
         </p>
 
-        <h3 className="card__title">{shortenedTitle}</h3>
+        <Marker mark={`${value}`}>
+          <h3 className="card__title">
+            {shortenedTitle}
+          </h3>
+        </Marker>
 
-        <p className="card__description">{shortenedSummary}</p>
+        <Marker mark={`${value}`}>
+          <p className="card__description">
+            {shortenedSummary}
+          </p>
+        </Marker>
 
         <Link to={`/articles/${id}`} className="card__link">
           Read more
