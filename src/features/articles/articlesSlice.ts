@@ -5,6 +5,7 @@ import { IArticle, IArticlesState } from '/src/types/types';
 
 const initialState: IArticlesState = {
   articles: [],
+  article: null,
   status: Status.IDLE,
   error: null,
 };
@@ -14,6 +15,17 @@ export const fetchArticles = createAsyncThunk(
   async () => {
     const response = await axios.get(
       'https://api.spaceflightnewsapi.net/v3/articles/'
+    );
+
+    return response.data;
+  }
+);
+
+export const fetchOneArticle = createAsyncThunk(
+  'aritcles/fetchOneArticle',
+  async (id: number) => {
+    const response = await axios.get(
+      `https://api.spaceflightnewsapi.net/v3/articles/${id}`
     );
 
     return response.data;
@@ -44,6 +56,17 @@ const articlesSlice = createSlice({
         }
       )
       .addCase(fetchArticles.rejected, setError);
+
+    builder
+      .addCase(fetchOneArticle.pending, setStatus)
+      .addCase(
+        fetchOneArticle.fulfilled,
+        (state, action: PayloadAction<IArticle>) => {
+          state.status = Status.SUCCEEDED;
+          state.article = action.payload;
+        }
+      )
+      .addCase(fetchOneArticle.rejected, setError);
   },
 });
 

@@ -23,6 +23,7 @@ export interface IArticle {
 
 export interface IArticlesState {
   articles: IArticle[];
+  article: IArticle | null;
   status: string;
   error: string | null;
 }

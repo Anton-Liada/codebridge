@@ -1,31 +1,24 @@
-import React, { useCallback, useMemo, useState } from 'react';
+import React, { useCallback, useState } from 'react';
 import './HomePage.scss';
 import { CardList } from '/src/components/cardList';
 import { Filter } from '/src/components/filter';
 import { useAppSelector } from '/src/features/hooks/hooks';
+import { filteredArticles } from '/src/helpers/helpers';
 
 export const HomePage: React.FC = () => {
   const [value, setValue] = useState('');
   const articles = useAppSelector(state => state.articles.articles);
 
-  const onChangeInput = useCallback((event: React.ChangeEvent<HTMLInputElement>) => {
-    setValue(event.target.value.trimStart());
-  }, []);
-
-  const filteredArticles = useMemo(() => {
-    return articles.filter(({ title, summary }) => {
-      const filteredTitle = title.toLowerCase().includes(value.toLowerCase());
-      const filterdSummary = summary.toLowerCase().includes(value.toLowerCase());
-
-      return filteredTitle || filterdSummary;
-    });
-  }, [value, articles]);
+  const onChangeInput = useCallback(
+    (event: React.ChangeEvent<HTMLInputElement>) => {
+      setValue(event.target.value.trimStart());
+    },
+    []
+  );
 
   let content;
 
-  (value)
-    ? content = filteredArticles
-    : content = articles;
+  value ? (content = filteredArticles(articles, value)) : (content = articles);
 
   return (
     <div className="home-page">
@@ -36,10 +29,7 @@ export const HomePage: React.FC = () => {
           value={value}
         />
 
-        <CardList
-          articles={content}
-          value={value}
-        />
+        <CardList articles={content} value={value} />
       </div>
     </div>
   );

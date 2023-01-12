@@ -1,0 +1,75 @@
+@import '../../styles/main.scss';
+
+.article {
+  position: relative;
+  padding-top: 150px;
+  max-width: 1440;
+  margin: 0 auto;
+  font-family: $ff-montserrat;
+
+  &__img {
+    position: absolute;
+    top: 0;
+    max-height: 245px;
+    object-fit: cover;
+    object-position: 0 50%;
+  }
+
+  &__wrapper {
+    position: relative;
+    padding: 35px 75px 50px;
+    margin-bottom: 35px;
+    background: $color-white;
+    border: 1px solid $color-white-1;
+    box-shadow: $shadow;
+  }
+
+  &__title {
+    margin-bottom: 50px;
+    font-size: $fs-24;
+    font-weight: $fw-400;
+    color: $color-dark-grey;
+    text-align: center;
+  }
+
+  &__description {
+    font-size: $fs-18;
+    color: $color-black;
+    line-height: 27px;
+  }
+
+  &__link {
+    position: relative;
+    display: inline-flex;
+    align-items: center;
+    margin-left: 75px;
+    margin-bottom: 45px;
+    font-weight: $fw-700;
+    color: $color-dark-grey;
+
+    &::before {
+      content: '';
+      position: absolute;
+      left: 0;
+      bottom: -5px;
+      width: 0;
+      height: 1px;
+      background-color: $color-dark-grey;
+    }
+
+    &:hover:before {
+      width: 100%;
+    }
+
+    &::before {
+      transition: width 0.35s;
+    }
+  }
+
+  &__link-icon {
+    height: 10px;
+    width: 12px;
+    padding-left: 18px;
+    background: url(../../styles/icons/Arrow-left.svg) no-repeat;
+  }
+}

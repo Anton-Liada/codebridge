@@ -14,9 +14,7 @@ export const Filter: React.FC<IFilterProps> = ({
 }) => {
   return (
     <div className="filter home-page__filter">
-      <label className="filter__label">
-        Filter by keywords
-      </label>
+      <label className="filter__label">Filter by keywords</label>
 
       <input
         className="filter__input"
@@ -26,9 +24,7 @@ export const Filter: React.FC<IFilterProps> = ({
         onChange={onChange}
       />
 
-      <p className="filter__results">
-        {`Results: ${amountOfArticles}`}
-      </p>
+      <p className="filter__results">{`Results: ${amountOfArticles}`}</p>
     </div>
   );
 };
