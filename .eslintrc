@@ -18,7 +18,6 @@
     "react",
     "@typescript-eslint"
   ],
-  "react/display-name": ["enabled", { "ignoreTranspilerName": "boolean" }],
   "rules": {},
   "settings": {
     "react": {
