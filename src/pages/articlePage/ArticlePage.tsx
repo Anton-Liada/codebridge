@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react';
 import { Link, useParams } from 'react-router-dom';
-import './ArticlePage.scss';
+import './articlePage.scss';
 import { Loader } from '/src/components/loader';
 import { fetchOneArticle } from '/src/features/articles/articlesSlice';
 import { useAppDispatch, useAppSelector } from '/src/features/hooks/hooks';

@@ -1,11 +1,11 @@
 import React, { useEffect } from 'react';
-import { Card } from '../card/Card';
+import { fetchArticles } from '../../features/articles/articlesSlice';
+import { useAppDispatch, useAppSelector } from '../../features/hooks/hooks';
+import { Status } from '../../types/enums';
+import { IArticle } from '../../types/types';
+import { Card } from '../card';
 import { Loader } from '../loader';
-import './CardList.scss';
-import { fetchArticles } from '/src/features/articles/articlesSlice';
-import { useAppDispatch, useAppSelector } from '/src/features/hooks/hooks';
-import { Status } from '/src/types/enums';
-import { IArticle } from '/src/types/types';
+import './cardList.scss';
 
 interface ICardListProps {
   articles: IArticle[];

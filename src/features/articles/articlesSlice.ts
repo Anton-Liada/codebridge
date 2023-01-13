@@ -1,5 +1,6 @@
 import { createAsyncThunk, createSlice, PayloadAction } from '@reduxjs/toolkit';
 import axios from 'axios';
+import { shortenedText } from '/src/helpers/helpers';
 import { Status } from '/src/types/enums';
 import { IArticle, IArticlesState } from '/src/types/types';
 
@@ -52,7 +53,12 @@ const articlesSlice = createSlice({
         fetchArticles.fulfilled,
         (state, action: PayloadAction<IArticle[]>) => {
           state.status = Status.SUCCEEDED;
-          state.articles = action.payload;
+          state.articles = action.payload.map(artilce => {
+            artilce.title = shortenedText(artilce.title, 40);
+            artilce.summary = shortenedText(artilce.summary, 100);
+
+            return artilce;
+          });
         }
       )
       .addCase(fetchArticles.rejected, setError);

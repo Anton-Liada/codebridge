@@ -1,9 +1,9 @@
 import React, { useCallback, useState } from 'react';
-import './HomePage.scss';
-import { CardList } from '/src/components/cardList';
-import { Filter } from '/src/components/filter';
-import { useAppSelector } from '/src/features/hooks/hooks';
-import { filteredArticles } from '/src/helpers/helpers';
+import { CardList } from '../../components/cardList';
+import { Filter } from '../../components/filter';
+import { useAppSelector } from '../../features/hooks/hooks';
+import { filteredArticles } from '../../helpers/helpers';
+import './homePage.scss';
 
 export const HomePage: React.FC = () => {
   const [value, setValue] = useState('');
@@ -18,7 +18,9 @@ export const HomePage: React.FC = () => {
 
   let content;
 
-  value ? (content = filteredArticles(articles, value)) : (content = articles);
+  (value)
+  ? (content = filteredArticles(articles, value))
+  : (content = articles);
 
   return (
     <div className="home-page">

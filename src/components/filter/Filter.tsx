@@ -1,5 +1,5 @@
 import React from 'react';
-import './Filter.scss';
+import './filter.scss';
 
 interface IFilterProps {
   amountOfArticles: number;

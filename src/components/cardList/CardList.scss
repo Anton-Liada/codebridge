@@ -2,6 +2,6 @@
 
 .card-list {
   display: grid;
-  grid-template-columns: repeat(3, minmax(340px, 400px));
+  grid-template-columns: repeat(auto-fill, minmax(340px, 400px));
   gap: 45px;
 }

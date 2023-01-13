@@ -5,11 +5,9 @@ export const formattedDate = (date: string) => {
     dateStyle: 'long',
   });
 
-  const formatDate = `${currentDate.split(',')[0]}th, ${
-    currentDate.split(',')[1]
-  }`;
+  const splitedDate = currentDate.split(',');
 
-  return formatDate;
+  return `${splitedDate[0]}th, ${splitedDate[1]}`;
 };
 
 export const shortenedText = (string: string, maxLength: number) => {
@@ -18,11 +16,18 @@ export const shortenedText = (string: string, maxLength: number) => {
     : string;
 };
 
-export const filteredArticles = (articles: IArticle[], value: string) => {
-  return articles.filter(({ title, summary }) => {
-    const filteredTitle = title.toLowerCase().includes(value.toLowerCase());
-    const filterdSummary = summary.toLowerCase().includes(value.toLowerCase());
+export const filterdText = (text: string, values: string) => {
+  return text.toLowerCase().includes(values.toLowerCase());
+};
 
-    return filteredTitle || filterdSummary;
-  });
+export const filteredArticles = (articles: IArticle[], value: string) => {
+  const filteredByTitle = articles.filter(({ title }) =>
+    filterdText(title, value)
+  );
+
+  const filteredBySummary = articles.filter(({ summary }) =>
+    filterdText(summary, value)
+  );
+
+  return [...new Set([...filteredByTitle, ...filteredBySummary])];
 };
