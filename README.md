@@ -33,6 +33,6 @@ You will also see any lint errors in the console.
 - React JS
 - SCSS
 - Typescript
-- Redux Toolkit
+- Redux thunk
 
 **Thank you for your attention and may the force be with you!**
