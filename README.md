@@ -1,6 +1,6 @@
 # CodeBridge test-task
 
-Implemented small application in React js + Typescript + Redux toolkit
+Implemented small application in React js + Typescript + Redux thunk
 
 **--Here is [DEMO LINK](https://Anton-Liada.github.io/codebridge/)**
 
